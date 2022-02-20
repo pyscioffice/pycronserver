@@ -7,14 +7,9 @@ Execute python functions using cron tab. Rather than entering them all in the cr
 table and executed by the `pycronserver` in a for loop. 
 
 ## Installation
-Install via conda:
-```
-conda install -c conda-forge pycronserver
-```
-
 Install via pip:
 ```
-pip install pycronserver
+pip install git+https://github.com/pyscioffice/pycronserver.git
 ```
 
 ## Python Interface
