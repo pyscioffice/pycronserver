@@ -50,10 +50,7 @@ class PyCronServer:
                 .filter(CronTasks.crontab == crontab)
             )
         else:
-            query = (
-                self._session.query(CronTasks)
-                .filter(CronTasks.crontab == crontab)
-            )
+            query = self._session.query(CronTasks).filter(CronTasks.crontab == crontab)
         for task in query.all():
             execute_funct(
                 module_funct=task.python_funct, input_dict=json.loads(task.input_json)
@@ -61,9 +58,8 @@ class PyCronServer:
 
     def _get_crontab_timesteps(self, filter_by_user_id=True):
         if filter_by_user_id:
-            query = (
-                self._session.query(CronTasks.crontab)
-                .filter(CronTasks.user_id == self._user_id)
+            query = self._session.query(CronTasks.crontab).filter(
+                CronTasks.user_id == self._user_id
             )
         else:
             query = self._session.query(CronTasks.crontab)
