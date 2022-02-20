@@ -3,7 +3,7 @@ import json
 import os
 import subprocess
 from crontab import CronTab
-from pycronserver.local import get_local_pycronserver, create_config_folder
+from pycronserver import get_local_pycronserver, create_config_folder
 
 
 class MyTestCase(unittest.TestCase):
@@ -31,4 +31,4 @@ class MyTestCase(unittest.TestCase):
         psc.write_to_crontab()
         with CronTab(user=True, tabfile=None) as cron:
             self.assertEqual(list(cron.commands)[0], 'pycronserver "10 * * * *"')
-        subprocess.check_output('pycronserver "10 * * * *"', shell=True)
+        subprocess.check_output(list(cron.commands)[0], shell=True)
