@@ -32,6 +32,9 @@ jobs:
         channel-priority: strict
         auto-update-conda: true
         environment-file: .ci_support/environment.yml
+    - name: Setup
+      shell: bash -l {0}
+      run: pip install .
     - name: Test
       shell: bash -l {0}
       timeout-minutes: 30
