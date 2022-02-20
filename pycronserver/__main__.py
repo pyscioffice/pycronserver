@@ -12,7 +12,8 @@ def command_line_parser():
         help="Crontab timestamp",
     )
     pcs = get_local_pycronserver()
-    pcs.execute_tasks(parser.crontab)
+    args = parser.parse_args()
+    pcs.execute_tasks(args.crontab)
 
 
 if __name__ == "__main__":
