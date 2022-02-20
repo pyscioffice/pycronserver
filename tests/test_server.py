@@ -32,4 +32,4 @@ class MyTestCase(unittest.TestCase):
         with CronTab(user=True, tabfile=None) as cron:
             self.assertEqual(list(cron.commands)[0], "pycronserver '10 * * * *'")
         subprocess.check_output(list(cron.commands)[0], shell=True)
-        self.assertEqual(psc.execute_tasks(crontab="10 * * * *"), 1)
+        psc.execute_tasks(crontab="10 * * * *")
