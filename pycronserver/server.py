@@ -17,7 +17,7 @@ class CronTasks(Base):
 
 
 class PyCronServer:
-    def __init__(self, session, username):
+    def __init__(self, session, username=True):
         self._session = session
         self._username = username
 
@@ -64,6 +64,6 @@ def execute_funct(module_funct, input_dict):
     return funct(**input_dict)
 
 
-def get_pycronserver(engine, session, username):
+def get_pycronserver(engine, session, username=True):
     Base.metadata.create_all(engine)
     return PyCronServer(session=session, username=username)

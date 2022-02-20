@@ -19,4 +19,9 @@ def get_local_pycronserver(config_dir="~/.pycronserver"):
     config = load_config(config_file=os.path.join(config_dir, "config.json"))
     engine = create_engine(config["connection_str"])
     session = sessionmaker(bind=engine)()
-    return get_pycronserver(engine=engine, session=session, username=config["username"])
+    if "username" in config.keys():
+        return get_pycronserver(
+            engine=engine, session=session, username=config["username"]
+        )
+    else:
+        return get_pycronserver(engine=engine, session=session, username=True)
