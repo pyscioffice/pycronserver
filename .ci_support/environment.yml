@@ -1,0 +1,7 @@
+channels:
+- conda-forge
+dependencies:
+- python
+- coverage
+- sqlalchemy =1.4.31
+- python-crontab =2.5.1

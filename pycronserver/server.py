@@ -22,7 +22,7 @@ class PyCronServer:
         self._username = username
 
     def get_crontab_timesteps(self):
-        return self._session.query(CronTasks.crontab).all()
+        return [entry[0] for entry in self._session.query(CronTasks.crontab).all()]
 
     def write_to_crontab(self):
         with CronTab(user=self._username) as cron:
@@ -38,7 +38,7 @@ class PyCronServer:
             CronTasks(
                 crontab=crontab,
                 python_funct=python_funct_path,
-                input_dict=json.dumps(input_dict),
+                input_json=json.dumps(input_dict),
             )
         )
 
