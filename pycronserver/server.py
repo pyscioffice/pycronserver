@@ -28,7 +28,7 @@ class PyCronServer:
             cron.remove_all(comment="pycronserver")
             for cron_tab in set(self._get_crontab_timesteps()):
                 job = cron.new(
-                    command="pycronserver '" + cron_tab + "', comment=pycronserver"
+                    command="pycronserver '" + cron_tab + "'", comment="pycronserver"
                 )
                 job.setall(cron_tab)
 
