@@ -16,13 +16,7 @@ def load_config(config_file="~/.pycronserver/config.json"):
 
 def get_local_pycronserver(config_dir="~/.pycronserver"):
     create_config_folder(config_dir=config_dir)
-    config = load_config(
-        config_file=os.path.join(config_dir, "config.json")
-    )
+    config = load_config(config_file=os.path.join(config_dir, "config.json"))
     engine = create_engine(config["connection_str"])
     session = sessionmaker(bind=engine)()
-    return get_pycronserver(
-        engine=engine,
-        session=session,
-        username=config["username"]
-    )
+    return get_pycronserver(engine=engine, session=session, username=config["username"])

@@ -26,11 +26,10 @@ class PyCronServer:
 
     def write_to_crontab(self):
         with CronTab(user=self._username) as cron:
-            cron.remove_all(comment='pycronserver')
+            cron.remove_all(comment="pycronserver")
             for cron_tab in set(self.get_crontab_timesteps()):
                 job = cron.new(
-                    command='pycronserver "' + cron_tab + '"',
-                    comment='pycronserver'
+                    command='pycronserver "' + cron_tab + '"', comment="pycronserver"
                 )
                 job.setall(cron_tab)
 
@@ -39,23 +38,21 @@ class PyCronServer:
             CronTasks(
                 crontab=crontab,
                 python_funct=python_funct_path,
-                input_dict=json.dumps(input_dict)
+                input_dict=json.dumps(input_dict),
             )
         )
 
     def execute_tasks(self, crontab):
-        for task in self._session.query(CronTasks).filter(CronTasks.crontab == crontab).all():
+        for task in (
+            self._session.query(CronTasks).filter(CronTasks.crontab == crontab).all()
+        ):
             execute_funct(
-                module_funct=task.python_funct,
-                input_dict=json.loads(task.input_json)
+                module_funct=task.python_funct, input_dict=json.loads(task.input_json)
             )
 
     @staticmethod
     def execute_funct(module_funct, input_dict):
-        return execute_funct(
-            module_funct=module_funct,
-            input_dict=input_dict
-        )
+        return execute_funct(module_funct=module_funct, input_dict=input_dict)
 
 
 def execute_funct(module_funct, input_dict):
