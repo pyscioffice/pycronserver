@@ -28,6 +28,7 @@ jobs:
       shell: bash -l {0}
       run: |
         coverage run -a -m unittest discover tests
+        coverage combine
     - name: Coverage
       shell: bash -l {0}
       run: |
