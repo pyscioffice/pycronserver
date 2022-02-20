@@ -20,8 +20,13 @@ def get_local_pycronserver(config_dir="~/.pycronserver"):
     engine = create_engine(config["connection_str"])
     session = sessionmaker(bind=engine)()
     if "username" in config.keys():
-        return get_pycronserver(
-            engine=engine, session=session, username=config["username"]
-        )
+        username = config["username"]
     else:
-        return get_pycronserver(engine=engine, session=session, username=True)
+        username = True
+    if "user_id" in config.keys():
+        user_id = config["user_id"]
+    else:
+        user_id = 1
+    return get_pycronserver(
+        engine=engine, session=session, username=username, user_id=user_id
+    )

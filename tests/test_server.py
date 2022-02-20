@@ -27,8 +27,8 @@ class MyTestCase(unittest.TestCase):
             python_funct_path="crontab.get_cronvalue",
             input_dict={"value": 1, "enums": None}
         )
-        self.assertEqual(psc.get_crontab_timesteps(), ["10 * * * *"])
+        self.assertEqual(psc._get_crontab_timesteps(), ["10 * * * *"])
         psc.write_to_crontab()
         with CronTab(user=True, tabfile=None) as cron:
-            self.assertEqual(list(cron.commands)[0], 'pycronserver "10 * * * *"')
+            self.assertEqual(list(cron.commands)[0], "pycronserver '10 * * * *'")
         subprocess.check_output(list(cron.commands)[0], shell=True)
