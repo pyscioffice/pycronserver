@@ -1,0 +1,5 @@
+# .coveragerc to control coverage.py
+[run]
+source = pycronserver
+omit = pycronserver/_version.py
+concurrency = multiprocessing
