@@ -30,5 +30,5 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(psc._get_crontab_timesteps(), ["10 * * * *"])
         psc.write_to_crontab()
         with CronTab(user=True, tabfile=None) as cron:
-            self.assertEqual(list(cron.commands)[0], "pycronserver '10 * * * *'")
+            self.assertEqual(list(cron.commands)[0], "pycronserver '10 * * * *', comment=pycronserver")
         subprocess.check_output(list(cron.commands)[0], shell=True)
