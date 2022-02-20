@@ -3,5 +3,6 @@ channels:
 dependencies:
 - python
 - coverage
+- coveralls
 - sqlalchemy =1.4.31
 - python-crontab =2.5.1
