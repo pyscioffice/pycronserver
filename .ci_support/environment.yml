@@ -4,4 +4,4 @@ dependencies:
 - python
 - coverage
 - sqlalchemy =1.4.31
-- python-crontab =2.5.1
+- python-crontab =2.6.0
