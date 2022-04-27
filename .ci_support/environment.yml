@@ -4,5 +4,5 @@ dependencies:
 - python
 - coverage
 - coveralls
-- sqlalchemy =1.4.35
+- sqlalchemy =1.4.36
 - python-crontab =2.6.0
