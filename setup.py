@@ -16,7 +16,7 @@ setup(
     packages=find_packages(exclude=["*tests*"]),
     install_requires=[
         'sqlalchemy==1.4.45',
-        'python-crontab==2.7.0'
+        'python-crontab==2.7.1'
     ],
     cmdclass=versioneer.get_cmdclass(),
     entry_points={
