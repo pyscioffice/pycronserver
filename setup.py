@@ -15,7 +15,7 @@ setup(
     license='BSD',
     packages=find_packages(exclude=["*tests*"]),
     install_requires=[
-        'sqlalchemy==1.4.46',
+        'sqlalchemy==2.0.0',
         'python-crontab==2.7.1'
     ],
     cmdclass=versioneer.get_cmdclass(),
